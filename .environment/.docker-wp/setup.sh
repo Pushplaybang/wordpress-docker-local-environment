@@ -149,6 +149,7 @@ do_multisite() {
 run() {
 
   printf "starting run script......"
+  cd var/www/html/
 
   # init functions
   set_envs
