@@ -88,8 +88,7 @@ wait_for_mysql() {
 setup_wp_config() {
   printf "=> Generating wp.config.php file... "
   rm -f /var/www/html/wp-config.php
-  # sudo -u www-data wp core config >/dev/null 2>&1 || \
-  sudo -u www-data wp core config >/dev/null 2>&1 || \
+  sudo -u www-data wp core config --allow-root >/dev/null 2>&1 || \
     ERROR $LINENO "Could not generate wp-config.php file"
   printf "Done!\n"
 }
@@ -151,9 +150,9 @@ do_multisite() {
 # ------------------------------------
 do_on_first_build() {
   if [ ! -f /var/www/html/wp-settings.php ]; then
-    printf "is the first build \n"
-  else
     printf "is NOT the first build \n"
+  else
+    printf "is the first build \n"
   fi
 }
 
@@ -167,34 +166,19 @@ run() {
   pwd
 
   # Run functions
-  printf "set envs \n"
   set_envs
-
-  printf "setup wpcli config \n"
   wpcli_config
-
-  printf "download wp \n"
   download_wp
-
 
   printf "\t%s\n" \
     "=======================================" \
     "    Begin WordPress Configuration" \
     "======================================="
 
-  printf "wait for mysql \n"
   wait_for_mysql
-
-  printf "setup wp config \n"
   setup_wp_config
-
-  printf "setup db \n"
   setup_db
-
-  printf "do multisite \n"
   do_multisite
-
-  printf "do on first build \n"
   do_on_first_build
 
   printf "\t%s\n" \
