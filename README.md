@@ -18,9 +18,20 @@ First install docker following the instructions below.
 # Quick Start
 This is simply using [docker-compose](https://docs.docker.com/compose/overview/), so starting and stopping the environment, or accessing specific containers is done by using standard docker-compose commands.
 
-1. with docker installed, clone the repo and in the `.env` file set `COMPOSE_PROJECT_NAME` to a unique name for your project. This is the only environment variable in `.env` file that you need to set.
+1. with docker installed, clone the repo into a new folder
 
-2. In your terminal from the project root, run `docker-compose up` (show container logs) or `docker-compose up -d` (for no logs).  To stop the environment, press `ctrl+C` or run `docker-compose stop`.
+```sh
+# get the git repo
+git clone git@github.com:Pushplaybang/wordpress-docker-local-environment.git . --depth=1
+# remove the git
+rm -Rf .git
+# initialize a new repository
+git init
+```
+
+2. In the `.env` file set `COMPOSE_PROJECT_NAME` to a unique name for your project. This is the only environment variable in `.env` file that you need to set.
+
+3. In your terminal from the project root, run `docker-compose up` (show container logs) or `docker-compose up -d` (for no logs).  To stop the environment, press `ctrl+C` or run `docker-compose stop`.
 
 ## What you get
 Once your environment starts it will create a themes, plugins and uploads folder, these are mapped to the wp-content folder in the wordpress php container. Note the uploads and plugins folders are GIT ignored by default.
