@@ -8,7 +8,6 @@ Prototypal Local WordPress Development environment using docker.  Includes:
 * MailHog - Mail Catcher for local dev
 
 ## requirements
-
 * Docker - https://www.docker.com/products/overview
 
 ## Quick Start
