@@ -69,7 +69,7 @@ When looking for a docker setup for wordpress none of them satified all of me ne
 
 * https://github.com/Wodby/docker4wordpress
 * https://wckr.github.io/
-* https://github.com/Pushplaybang/wordpress-starter
+* https://github.com/visiblevc/wordpress-starter
 
 ## Contributions and Suggestions Welcome!
 Have something you think this needs or could use as an improvement, let me know.  add [an issue on github]() or fork and create a pull request.
