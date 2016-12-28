@@ -146,26 +146,11 @@ do_multisite() {
   fi
 }
 
-# TODO : Operations to perform on first build
-# ------------------------------------
-do_on_first_build() {
-  if [ ! -f /var/www/html/wp-settings.php ]; then
-    printf "is NOT the first build \n"
-  else
-    printf "is the first build \n"
-  fi
-}
-
-
-
 run() {
 
   printf "starting run script......"
-  cd /var/www/html
 
-  pwd
-
-  # Run functions
+  # init functions
   set_envs
   wpcli_config
   download_wp
@@ -175,11 +160,11 @@ run() {
     "    Begin WordPress Configuration" \
     "======================================="
 
+  # wp functions
   wait_for_mysql
   setup_wp_config
   setup_db
   do_multisite
-  do_on_first_build
 
   printf "\t%s\n" \
     "=======================================" \

@@ -17,27 +17,27 @@ services:
     links:
       - mariadb
     environment:
-      PHP_DOCROOT: ./
-      PHP_SITE_NAME: dev
-      PHP_HOST_NAME: localhost:8000
-      PHP_SENDMAIL_PATH: /usr/sbin/sendmail -t -i -S mailhog:1025
-      PHP_XDEBUG_ENABLED: 0 # Set 1 to enable.
-      SITE_TITLE: 'freshpress'
-      DB_HOST: mariadb
-      DB_NAME: freshdb
-      DB_USER: wordpress
-      DB_PASS: wordpress
-      DB_PREFIX: _wp
-      ADMIN_EMAIL: admin@wordpress.dev
-      WP_DEBUG: 'true'
-      WP_DEBUG_DISPLAY: 'true'
-      WP_DEBUG_LOG: 'true'
-      MULTISITE: 'false'
-      VERSION: 'latest'
+      - PHP_DOCROOT
+      - PHP_SITE_NAME
+      - PHP_HOST_NAME
+      - PHP_SENDMAIL_PATH
+      - PHP_XDEBUG_ENABLED
+      - SITE_TITLE
+      - DB_HOST
+      - DB_NAME
+      - DB_USER
+      - DB_PASS
+      - DB_PREFIX
+      - ADMIN_EMAIL
+      - WP_DEBUG
+      - WP_DEBUG_DISPLAY
+      - WP_DEBUG_LOG
+      - MULTISITE
+      - VERSION
     volumes:
-      - ./uploads:/var/www/html/wp-content/uploads
-      - ./themes:/var/www/html/wp-content/themes
-      - ./plugins:/var/www/html/wp-content/plugins
+      - ./../uploads:/var/www/html/wp-content/uploads
+      - ./../themes:/var/www/html/wp-content/themes
+      - ./../plugins:/var/www/html/wp-content/plugins
       - ./data:/data
 
   # Our Web Server
