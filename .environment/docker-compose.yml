@@ -5,10 +5,10 @@ services:
   mariadb:
     image: wodby/wordpress-mariadb
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: freshdb
-      MYSQL_USER: wordpress
-      MYSQL_PASSWORD: wordpress
+      - MYSQL_ROOT_PASSWORD
+      - MYSQL_DATABASE
+      - MYSQL_USER
+      - MYSQL_PASSWORD
 
   # WordPress running on PHP-FPM
   php:
@@ -44,16 +44,16 @@ services:
   nginx:
     image: wodby/wordpress-nginx
     environment:
-      NGINX_SERVER_NAME: localhost
-      NGINX_UPSTREAM_NAME: php
-      NGINX_DOCROOT: ./
+      - NGINX_SERVER_NAME
+      - NGINX_UPSTREAM_NAME
+      - NGINX_DOCROOT
     volumes_from:
       - php
     ports:
-      - "8000:80"
+      - "${WEB_PORT}:80"
 
   # Catch Mail for local development
   mailhog:
     image: mailhog/mailhog
     ports:
-      - "8001:8025"
+      - "${MAILHOG_PORT}:8025"
