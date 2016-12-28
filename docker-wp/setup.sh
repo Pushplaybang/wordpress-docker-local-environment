@@ -3,7 +3,6 @@
 # Set Environmental Variables
 # - - - - - - - - -
 set_envs() {
-  # TODO: themes & plugins
   SITE_TITLE=${SITE_TITLE:-'freshpress'}
   DB_HOST=${DB_HOST:-'db'}
   DB_NAME=${DB_NAME:-'wordpress'}
