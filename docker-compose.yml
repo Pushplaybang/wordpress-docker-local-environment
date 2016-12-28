@@ -1,0 +1,58 @@
+version: "2"
+
+services:
+  # a lighter drop in replacement for MySQL
+  mariadb:
+    image: wodby/wordpress-mariadb
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: freshdb
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+
+  # WordPress running on PHP-FPM
+  php:
+    build:
+      context: ./.docker-wp
+    links:
+      - mariadb
+    environment:
+      PHP_DOCROOT: ./
+      PHP_SITE_NAME: dev
+      PHP_HOST_NAME: localhost:8000
+      PHP_SENDMAIL_PATH: /usr/sbin/sendmail -t -i -S mailhog:1025
+      PHP_XDEBUG_ENABLED: 0 # Set 1 to enable.
+      SITE_TITLE: 'freshpress'
+      DB_HOST: mariadb
+      DB_NAME: freshdb
+      DB_USER: wordpress
+      DB_PASS: wordpress
+      DB_PREFIX: _wp
+      ADMIN_EMAIL: admin@wordpress.dev
+      WP_DEBUG: 'true'
+      WP_DEBUG_DISPLAY: 'true'
+      WP_DEBUG_LOG: 'true'
+      MULTISITE: 'false'
+      VERSION: 'latest'
+    volumes:
+      - ./uploads:/var/www/html/wp-content/uploads
+      - ./mytheme:/var/www/html/wp-content/themes
+      - ./plugins:/var/www/html/wp-content/plugins
+
+  # Our Web Server
+  nginx:
+    image: wodby/wordpress-nginx
+    environment:
+      NGINX_SERVER_NAME: localhost
+      NGINX_UPSTREAM_NAME: php
+      NGINX_DOCROOT: ./
+    volumes_from:
+      - php
+    ports:
+      - "8000:80"
+
+  # Catch Mail for local development
+  mailhog:
+    image: mailhog/mailhog
+    ports:
+      - "8001:8025"
