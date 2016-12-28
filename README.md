@@ -8,12 +8,16 @@ Prototypal Local WordPress Development environment using docker.  Includes:
  * MailHog - Mail Catcher for local dev
 
 ## requirements
+First install docker following the instructions below.
+
 * Docker - https://www.docker.com/products/overview
 
 ## Quick Start
-This is simply using docker-compose, so starting and stopping the environment, or accessing specific containers uses standard docker compose commands.
+This is simply using [docker-compose](https://docs.docker.com/compose/overview/), so starting and stopping the environment, or accessing specific containers is done by using standard docker-compose commands.
 
-with docker installed, clone the repo and in your terminal, from the project root, run `docker-compose up` (show container logs) or `docker-compose up -d` (for no logs).  To stop the environment, press `ctrl+C` or run `docker-compose stop`.
+1. with docker installed, clone the repo and in the `.env` file set `COMPOSE_PROJECT_NAME` to a unique name for your project. This is the only environment variable in `.env` file that you need to set.
+
+2. In your terminal from the project root, run `docker-compose up` (show container logs) or `docker-compose up -d` (for no logs).  To stop the environment, press `ctrl+C` or run `docker-compose stop`.
 
 ## What you get
 Once your environment starts it will create a themes, plugins and uploads folder, these are mapped to the wp-content folder in the wordpress php container. Note the uploads and plugins folders are GIT ignored by default.
