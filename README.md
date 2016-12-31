@@ -12,6 +12,23 @@ First install docker following the instructions below.
 
 * Docker - https://www.docker.com/products/overview
 
+<!-- MarkdownTOC depth=3 autolink=true bracket=round style=unordered -->
+
+- [Quick Start](#quick-start)
+  - [What you get](#what-you-get)
+    - [Theme Development](#theme-development)
+    - [Plugin Development](#plugin-development)
+    - [Advanced Setup](#advanced-setup)
+- [Notes](#notes)
+  - [Quick Docker Compose Commands Reference](#quick-docker-compose-commands-reference)
+  - [Rebuild the stack](#rebuild-the-stack)
+  - [Common Issues](#common-issues)
+- [Why Docker for WP](#why-docker-for-wp)
+- [Credits and Inspiration](#credits-and-inspiration)
+- [Contributions and Suggestions Welcome!](#contributions-and-suggestions-welcome)
+    - [License MIT](#license-mit)
+
+<!-- /MarkdownTOC -->
 
 
 
