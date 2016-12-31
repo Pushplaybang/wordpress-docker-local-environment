@@ -99,6 +99,15 @@ docker-compose build
  - Ensure that you've updated under the php vars and the db vars in .env file.
 
 
+# Why Docker for WP
+
+* Minimal system requirements and quick setup
+* Easy transferability between developers
+* Lightening fast project setup times as new containers are created from images stored on your system after the first setup
+* incredibly easy to learn, configure, change, and extend and then share
+* paves the way for scalable docker deployments
+
+
 # Credits and Inspiration
 When looking for a docker setup for wordpress none of them satified all of me needs, from php7 and nginx to having working email, flexible project setup, splitting the services out, using alpine base images,  or putting wordpress inside the container rather than bloating your project directory. This was inspired by the work done on the following projects:
 
