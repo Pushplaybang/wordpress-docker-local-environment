@@ -12,15 +12,19 @@ First install docker following the instructions below.
 
 * Docker - https://www.docker.com/products/overview
 
-<!-- MarkdownTOC depth=3 autolink=true bracket=round style=unordered -->
+<!-- MarkdownTOC depth=4 autolink=true bracket=round style=unordered -->
 
 - [Quick Start](#quick-start)
   - [What you get](#what-you-get)
     - [Theme Development](#theme-development)
     - [Plugin Development](#plugin-development)
     - [Advanced Setup](#advanced-setup)
+      - [Developing a Theme or Plugin](#developing-a-theme-or-plugin)
+      - [Working In the Project Root](#working-in-the-project-root)
+      - [Access to the WordPress core files](#access-to-the-wordpress-core-files)
+      - [Notes](#notes)
     - [Extending The Environment](#extending-the-environment)
-- [Notes](#notes)
+- [Notes](#notes-1)
   - [Why Docker for WordPress](#why-docker-for-wordpress)
   - [Basic Concepts](#basic-concepts)
   - [Quick Docker Compose Commands Reference](#quick-docker-compose-commands-reference)
@@ -88,7 +92,7 @@ You could of course also map the root directory to a specific theme of plugin di
   - ./../:/var/www/html/wp-content/themes/<plugin_or_theme_folder_name>
 ```
 
-#### Want acess to the WordPress core files?
+#### Access to the WordPress core files
 then mount the entire container root directory into a folder:
 
 ```sh
