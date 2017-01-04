@@ -19,11 +19,13 @@ First install docker following the instructions below.
     - [Theme Development](#theme-development)
     - [Plugin Development](#plugin-development)
     - [Advanced Setup](#advanced-setup)
+    - [Extending The Environment](#extending-the-environment)
 - [Notes](#notes)
+  - [Why Docker for WordPress](#why-docker-for-wordpress)
+  - [Basic Concepts](#basic-concepts)
   - [Quick Docker Compose Commands Reference](#quick-docker-compose-commands-reference)
   - [Rebuild the stack](#rebuild-the-stack)
   - [Common Issues](#common-issues)
-- [Why Docker for WP](#why-docker-for-wp)
 - [Credits and Inspiration](#credits-and-inspiration)
 - [Contributions and Suggestions Welcome!](#contributions-and-suggestions-welcome)
     - [License MIT](#license-mit)
@@ -86,13 +88,58 @@ You could of course also map the root directory to a specific theme of plugin di
   - ./../:/var/www/html/wp-content/themes/<plugin_or_theme_folder_name>
 ```
 
+#### Want acess to the WordPress core files?
+then mount the entire container root directory into a folder:
 
-**note :** the uploads and data volumes are also listed as a convenience, and not neccessary for the environment to operate as expected.
+```sh
+  - ./../wordpress:/var/www/html/
+```
+
+#### Notes
+ - the uploads and data volumes are also listed as a convenience, and not neccessary for the environment to operate as expected.
+
+
+### Extending The Environment
+One of the major benefits of using docker is how easy it can be to extend your setup withadditional dependancies.  Simply edit the `docker-compose.yml` file in the `.environment` directory. for example:
+
+```yaml
+# redis
+redis:
+  image: redis:3.2-alpine
+
+# memcached
+memcached:
+  image: memcached:1.4-alpine
+
+# elasticsearch
+elasticsearch:
+  image: elasticsearch:5.1.1-alpine
+```
+
+Look up these and more images on [docker hub](https://hub.docker.com/) where you'll find any available documentation. You'll notice that we're using the alpine versions for all images, which keeps the images and container sizes much slimmer.
 
 
 
 
 # Notes
+Its worth spending some time getting to grips with the fundementals of docker and docker compose if you haven't worked with it before.
+
+## Why Docker for WordPress
+
+* Minimal system requirements and quick setup
+* Easy transferability between developers
+* Lightening fast project setup times as new containers are created from images stored on your system after the first setup
+* incredibly easy to learn, configure, change, extend and then share
+* paves the way for scalable docker deployments
+
+
+## Basic Concepts
+Fundementally, docker relies on "images", once an image is downloaded, you work with a "container", which is an instance of an image. This is why setting up a new environment for each project is so quick, as its creating your containers from locally stored images.  Docker compose allows us to "compose" a set of images as an environment.
+
+ You will be creating a set of isolated containers for each project, so if you require unique dependancies for that project, adjusting it without affecting your entire development machine becomes trivial.
+
+Learn more about docker by having a look at the documentation here: https://docs.docker.com/
+
 
 ## Quick Docker Compose Commands Reference
 * up with logging : `docker-compose up`
@@ -100,6 +147,8 @@ You could of course also map the root directory to a specific theme of plugin di
 * rebuild : `docker-compose up build`
     * pass the container name after build to target a specific container
 * remove specific container : `docker-compose rm <container_name>`
+* list all docker images on your system: `docker images`
+* list all containers: `docker ps -a`.
 
 ## Rebuild the stack
 if you'd like to rebuild the stack run the following:
@@ -116,13 +165,7 @@ docker-compose build
  - Ensure that you've updated under the php vars and the db vars in .env file.
 
 
-# Why Docker for WP
-
-* Minimal system requirements and quick setup
-* Easy transferability between developers
-* Lightening fast project setup times as new containers are created from images stored on your system after the first setup
-* incredibly easy to learn, configure, change, and extend and then share
-* paves the way for scalable docker deployments
+___
 
 
 # Credits and Inspiration
