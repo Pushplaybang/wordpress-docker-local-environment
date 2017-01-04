@@ -10,7 +10,7 @@ services:
       - MYSQL_USER
       - MYSQL_PASSWORD
     ports:
-      - 3306:3306
+      - ${MYSQL_PORT}:3306
 
   # WordPress running on PHP-FPM
   php:
