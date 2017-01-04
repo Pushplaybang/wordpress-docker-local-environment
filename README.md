@@ -165,8 +165,7 @@ docker-compose rm php mariadb nginx mailhog
 docker-compose build
 ```
 ## Common Issues
-**Scenario:**  updating the db name, user or password.
- - Ensure that you've updated under the php vars and the db vars in .env file.
+ - undoubtedly coming soon.
 
 
 ___
