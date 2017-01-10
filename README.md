@@ -146,7 +146,11 @@ Its worth spending some time getting to grips with the fundementals of docker an
 
 
 ## Basic Concepts
-Fundementally, docker relies on "images", once an image is downloaded, you work with a "container", which is an instance of an image. This is why setting up a new environment for each project is so quick, as its creating your containers from locally stored images.  Docker compose allows us to "compose" a set of images as an environment.
+By Comparison to Vagrant which creates Virtual Machines in minutes, Docker creates Virtual Containers in seconds.
+
+Instead of providing a full Virtual Machine, like you get with Vagrant, Docker provides you lightweight Virtual Containers, that share the same kernel and allow to safely execute independent processes.
+
+Fundementally, docker relies on "images", once an image is downloaded, you work with a single or set of "containers", which are instances of an image. This is why setting up a new environment for each project is so quick, as its creating your containers from locally stored images.  Docker compose allows us to "compose" a set of images as an environment.
 
  You will be creating a set of isolated containers for each project, so if you require unique dependancies for that project, adjusting it without affecting your entire development machine becomes trivial.
 
