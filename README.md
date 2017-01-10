@@ -1,5 +1,5 @@
 # wordpress-docker-local-environment
-Prototypal Local WordPress Development Environment Using Docker. Includes:
+Prototypal Local WordPress Development Environment Using Docker, quickly configurable for theme or plugin development and more. Includes:
 
  * DB - MariaDB (MySQL drop-in replacement)
  * PHP7 - PHP is processed in its own container using PHP FPM
@@ -10,7 +10,10 @@ Prototypal Local WordPress Development Environment Using Docker. Includes:
 ## requirements
 First install docker following the instructions below.
 
+* Git
 * Docker - https://www.docker.com/products/overview
+
+## Table of Contents
 
 <!-- MarkdownTOC depth=4 autolink=true bracket=round style=unordered -->
 
@@ -37,7 +40,6 @@ First install docker following the instructions below.
 <!-- /MarkdownTOC -->
 
 
-
 # Quick Start
 This is simply using [docker-compose](https://docs.docker.com/compose/overview/), so starting and stopping the environment, or accessing specific containers is done by using standard docker-compose commands.
 
@@ -56,6 +58,7 @@ git init
 
 3. In your terminal from the project root, run `docker-compose up` (show container logs) or `docker-compose up -d` (for no logs).  To stop the environment, press `ctrl+C` or run `docker-compose stop`.
 
+
 ## What you get
 Once your environment starts it will create a themes, plugins and uploads folder, these are mapped to the wp-content folder in the wordpress php container. Note the uploads and plugins folders are GIT ignored by default.
 
@@ -64,14 +67,18 @@ Once your environment starts it will create a themes, plugins and uploads folder
  * connect to your DB via `http://localhost:3306`
    * the default username and password are both `wordpress`, if you change these in the `.env` file, use your custom username and password.
 
+
 ### Theme Development
 To create a new theme simply add it in the themes directory, or follow the instructions below in the "advanced setup" section.
+
 
 ### Plugin Development
 To create a new plugin simply add it in the plugins directory, make sure to remove the plugins folder from the `.gitignore`, or follow the instructions below in the "advanced setup" section.
 
+
 ### Advanced Setup
 By default this basically maps the main folders from the wp-content folder, into your project root.  This makes no assumptions about what you're developing, and what you might deploy.  Though it may leave you with some junk in your repository if you don't take the time to clean it up, or manage your .gitignore carefully.
+
 
 #### Developing a Theme or Plugin
 If you'd like to be more selective about your project structure, or what you map into the container, you can do this by editing the `.environment/docker-compose.yml` file.  scroll to the `volumes` section defined under the `php` container, and customise it for your project.  If you'd prefer to mount in a single theme directory, or plugin directory remove the default volumes for plugins and themes listed and add the following:
@@ -84,6 +91,7 @@ If you'd like to be more selective about your project structure, or what you map
 ```
 
 if you add a custom volume after starting your project, you will have to restart your docker containers.
+
 
 #### Working In the Project Root
 You could of course also map the root directory to a specific theme of plugin directory if you prefer. simply change to volumes to:
