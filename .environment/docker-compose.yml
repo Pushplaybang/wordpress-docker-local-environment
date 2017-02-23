@@ -2,7 +2,7 @@ version: "2"
 
 services:
   # a lighter drop in replacement for MySQL
-  mariadb:
+  db:
     image: wodby/wordpress-mariadb
     environment:
       - MYSQL_ROOT_PASSWORD
@@ -13,11 +13,11 @@ services:
       - ${MYSQL_PORT}:3306
 
   # WordPress running on PHP-FPM
-  php:
+  wp:
     build:
       context: ./.docker-wp
     links:
-      - mariadb
+      - db
     environment:
       - PHP_DOCROOT
       - PHP_SITE_NAME
@@ -42,7 +42,7 @@ services:
       - ./../plugins:/var/www/html/wp-content/plugins
       - ./data:/data
 
-  # Our Web Server
+  # Our Web Server serving files from the php-fpm container
   nginx:
     image: wodby/wordpress-nginx
     environment:
@@ -50,7 +50,7 @@ services:
       - NGINX_UPSTREAM_NAME
       - NGINX_DOCROOT
     volumes_from:
-      - php
+      - wp
     ports:
       - "${WEB_PORT}:80"
 
