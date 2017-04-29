@@ -5,8 +5,8 @@
 set_envs() {
   SITE_TITLE=${SITE_TITLE:-'freshpress'}
   DB_HOST=${DB_HOST:-'db'}
-  DB_NAME=${DB_NAME:-'wordpress'}
-  DB_PASS=${DB_PASS:-'wordpress'}
+  DB_NAME=${DB_NAME:-'wordpress-default'}
+  DB_PASS=${DB_PASS:-'wordpress-default'}
   DB_USER=${DB_USER:-'root'}
   DB_PREFIX=${DB_PREFIX:-'wp_'}
   WP_VERSION=${WP_VERSION:-'latest'}
@@ -19,6 +19,19 @@ set_envs() {
     BEFORE_URL=$(echo "$SEARCH_REPLACE" | cut -d ',' -f 1) && \
     AFTER_URL=$(echo "$SEARCH_REPLACE" | cut -d ',' -f 2) || \
     SEARCH_REPLACE=false
+
+echo "SITE_TITLE: $SITE_TITLE"
+echo "DB_HOST: $DB_HOST"
+echo "DB_NAME: $DB_NAME"
+echo "DB_PASS: $DB_PASS"
+echo "DB_USER: $DB_USER"
+echo "DB_PREFIX: $DB_PREFIX"
+echo "WP_VERSION: $WP_VERSION"
+echo "ADMIN_EMAIL: $ADMIN_EMAIL"
+echo "WP_DEBUG_DISPLAY: $WP_DEBUG_DISPLAY"
+echo "WP_DEBUG_LOG: $WP_DEBUG_LOG"
+echo "WP_DEBUG: $WP_DEBUG"
+echo "MULTISITE: $MULTISITE"
 }
 
 # General Purpose Error Function

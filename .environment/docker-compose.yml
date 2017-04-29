@@ -5,11 +5,10 @@ services:
   db:
     image: wodby/wordpress-mariadb
     environment:
-      - MYSQL_ALLOW_EMPTY_PASSWORD
-      - MYSQL_ROOT_PASSWORD
-      - MYSQL_DATABASE
-      - MYSQL_USER
-      - MYSQL_PASSWORD
+      MYSQL_ROOT_PASSWORD: ${DB_PASS}
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASS}
     ports:
       - 3306:3306
 
