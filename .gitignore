@@ -46,9 +46,13 @@ bower_components
 .build
 .idea/
 docker-runtime/
+assets/sass/lib/
 
 # Project Specific
 .phpintel/
-plugins/
-uploads/
+.plugins/
+.uploads/
+.wp/
+.themes/
 data/
+theme/public
