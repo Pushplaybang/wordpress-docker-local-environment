@@ -5,12 +5,13 @@ services:
   db:
     image: wodby/wordpress-mariadb
     environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD
       - MYSQL_ROOT_PASSWORD
-      - DB_NAME
-      - DB_USER
-      - DB_PASS
+      - MYSQL_DATABASE
+      - MYSQL_USER
+      - MYSQL_PASSWORD
     ports:
-      - ${MYSQL_PORT}:3306
+      - 3306:3306
 
   # WordPress running on PHP-FPM
   wp:
@@ -37,10 +38,13 @@ services:
       - MULTISITE
       - VERSION
     volumes:
-      - ./../uploads:/var/www/html/wp-content/uploads
-      - ./../themes:/var/www/html/wp-content/themes
-      - ./../plugins:/var/www/html/wp-content/plugins
-      - ./data:/data
+      # mounted in for normal wp operation, into hidden folder(s)
+      - ./.wp:/var/www/html/
+      - ./.plugins:/var/www/html/wp-content/plugins
+      - ./.uploads:/var/www/html/wp-content/uploads
+      - ./.themes:/var/www/html/wp-content/themes
+      # custom theme or plugin folder, add all project specific folders here
+      - ./../theme:/var/www/html/wp-content/themes/tortoisehare
 
   # Our Web Server serving files from the php-fpm container
   nginx:
