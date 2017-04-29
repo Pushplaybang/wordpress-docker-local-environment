@@ -19,13 +19,13 @@ For smaller projects we're following this feature branch workflow that can be fo
 
 This [workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow) is better suited to larger, ongoing projects with multiple releases and CI.
 
-We use two primary branches. `master` and `develop`. `develop` is what you'll create pull requests against, and should be deployed to staging environments for testing.
+We use two primary branches. `master` and `development`. `development` is what you'll create pull requests against, and should be deployed to staging environments for testing.
 
 Once enough work has gone in to create a deliverable and deployable piece of value, and all testing is complete we create a release branch (this is where we start adding version numbers, add documentation and do any prep related to the release).
 
 This then gets merged into `master`, which will then be deployed to a production environment.
 
-We should merge `master` back into `development`.  Ideally `master` should always represent what is in production.
+We should merge `master` back into `development` only if hotfix issues have been merged and deployed. Ideally `master` should always represent what is in production.
 
 ### Contributing to the project
 Always branch, and use the below naming schema for branches. Once you've completed the work for that branch, push it up to Github and open a pull request against `development`.
@@ -56,9 +56,6 @@ Commit titles should be 80 characters or shorter and additional descriptions sho
 
 ### Issues
 If you think you've found a bug, or have a concern, check that its not already in the current issues, and then use the issue template if appropriate, if design/style related screenshots are helpful, and if it's a feature please describe it fully. If you're aware of who worked on the related functionality, mention them in the comments rather than assigning them.
-
-### External contributors
-Contributers external to Nona Creative who work on private repositories can be added on the settings page of that repository rather than adding them to teams. This allows for much more fine-grained access control.
 
 ### Versioning things
 When it's neccessary to use versioning we should follow the Semver pattern as discussed [here](http://semver.org/).
