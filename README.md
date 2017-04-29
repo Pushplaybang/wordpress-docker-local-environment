@@ -1,5 +1,8 @@
 # wordpress-docker-local-environment
-Local WordPress Development Environment Using Docker, quickly configurable for theme and plugin development. Includes:
+Local WordPress Development Environment Using Docker, quickly configurable for theme and plugin development. 
+
+
+### This Environment Includes:
 
  * DB - MariaDB (MySQL drop-in replacement)
  * PHP7 - PHP is processed in its own container using PHP FPM
@@ -44,6 +47,7 @@ git init
 
 3. In your terminal from the project root, run `docker-compose up` (show container logs) or `docker-compose up -d` (for no logs).  To stop the environment, press `ctrl+C` or run `docker-compose stop` or `docker-compose kill`.
 
+**Adavnced config : ** For additional documentation view the [advanced notes](https://github.com/Pushplaybang/wordpress-docker-local-environment/blob/master/ADVANCED.md)
 
 ## What you get
 Once your environment starts it will create a theme folder, this is mapped to the wp-content folder in the wordpress php container. should you wish to map other folders, suh as for a custom plugin etc, have a look at the [Advanced Setup](#advanced-setup) below.
@@ -62,7 +66,7 @@ When looking for a docker setup for wordpress none of them satified all of me ne
 * https://github.com/visiblevc/wordpress-starter
 
 # Contributions and Suggestions Welcome!
-Have something you think this needs or could use as an improvement, let me know.  add [an issue on github]() or fork and create a pull request.
+Have something you think this needs or could use as an improvement, let me know.  add [an issue on github](https://github.com/Pushplaybang/wordpress-docker-local-environment/issues) or fork and create a pull request.
 
 
 ____
