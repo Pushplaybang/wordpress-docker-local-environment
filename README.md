@@ -47,10 +47,10 @@ git init
 
 3. In your terminal from the project root, run `docker-compose up` (show container logs) or `docker-compose up -d` (for no logs).  To stop the environment, press `ctrl+C` or run `docker-compose stop` or `docker-compose kill`.
 
-**Adavnced config : ** For additional documentation view the [advanced notes](https://github.com/Pushplaybang/wordpress-docker-local-environment/blob/master/ADVANCED.md)
+**Adavnced config :** For additional documentation view the [advanced notes](https://github.com/Pushplaybang/wordpress-docker-local-environment/blob/master/ADVANCED.md)
 
 ## What you get
-Once your environment starts it will create a theme folder, this is mapped to the wp-content folder in the wordpress php container. should you wish to map other folders, suh as for a custom plugin etc, have a look at the [Advanced Setup](#advanced-setup) below.
+Once your environment starts it will create a theme folder, this is mapped to the wp-content folder in the wordpress php container. should you wish to map other folders, such as for a custom plugin etc, have a look at the [Advanced Setup]((https://github.com/Pushplaybang/wordpress-docker-local-environment/blob/master/ADVANCED.md) readme.
 
  * access the wordpress site at `http://localhost:8000/`
  * access mailhog at `http://localhost:8001/`
